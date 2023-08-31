@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>User Profile</h1>
+        <!-- Display user info -->
+        <p><strong>Username:</strong> <span th:text="${user.username}"></span></p>
+        <!-- Display submitted bugs -->
+        <h2>Submitted Bugs</h2>
+        <ul>
+            <li th:each="bug : ${bugs}">
+                <a th:href="@{/bug-details/{id}(id=${bug.id})}" th:text="${bug.title}"></a>
+            </li>
+        </ul>
+        <!-- Links -->
+        <a class="btn btn-primary" th:href="@{/submit-bug}">Submit a Bug</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
